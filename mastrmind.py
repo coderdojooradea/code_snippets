@@ -11,6 +11,14 @@ COLORS = {
     5 : "magenta"
 }
 
+GUESSES = {
+    0 : "white",
+    1 : "white",
+    2 : "gray",
+    3 : "black"
+}
+
+
 # lista pentru pozitii in joc
 POSITIONS = [0, 1, 2, 3]
     
@@ -60,28 +68,39 @@ def show_result(position):
 
 
 def check_guess():
-    global attemps_left
+    global attemps_left, status
     if len(colors) == 4:
         attemps_left -= 1
         # modificam label incercari
-
+        
         guess = [list(COLORS.values()).index(c) for c in colors]
-        check_guess_result(guess)
-        print(status)
+        correct_positions, correct_colors = check_guess_result(guess)
+        if correct_positions == 4:
+            print("You won")
+        elif attemps_left == 0:
+            print("Game over. The code was: {}".format(code))
+        else:
+            colors.clear()
+            for i in range(4):
+                button = tk.Button(window, bg=GUESSES[status[i]], command=lambda x=i: make_guess(x))
+                button.place(x=i*100+50, y=50, width=60, height=60)
+            print(status)
+            status = [0,0,0,0]
 
 def check_guess_result(guess):
     global status
     correct_positions = 0
     correct_colors = 0
     for i in range(4):
-        if guess[i] == code[i]:
-            correct_positions +=1
-            status[i]= 2
         if guess[i] in code:
             correct_colors += 1
-            status[i] = 3
+            status[i] = 2
+        if guess[i] == code[i]:
+            correct_positions +=1
+            status[i]= 3
         if guess[i] not in code:
             status[i] = 0
+    return correct_positions, correct_colors
 
 
 attemps_left = 10
