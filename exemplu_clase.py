@@ -69,6 +69,15 @@ class Catalog:
     def addInfo(self, nota):
         self.informatica.append(nota)
 
+    def getMedieRomana(self):
+        if self.romana != None:
+            sum = 0
+            for k in range(len(self.romana)):
+                sum += self.romana[k]
+            medie = sum/len(self.romana)
+            return medie
+        return "Nu are note la Limba Romana"
+
 for i in range(30):
     elevi.append(Elev())
     elevi[i].setNume("{} {}".format(random.choice(nume), random.choice(prenume)))
@@ -80,5 +89,8 @@ for i in range(30):
     for j in range(random.randrange(3,7)):
         elevi[i].catalog.addRomana(random.randrange(4,11))
 
-for i in range(30):
-    print(elevi[i].catalog.romana)
+# for i in range(30):
+#     print(elevi[i].catalog.romana)
+
+print(elevi[13].catalog.romana)
+print(elevi[13].catalog.getMedieRomana())
