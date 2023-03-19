@@ -3,7 +3,7 @@ import random
 nume = ["Ionescu", "Munteanu", "Toth", "Kiss", "Schmidt", "Smith"]
 prenume = ["Ion", "Andrei", "David", "Vlad", "Robert", "Mihai"]
 clase = [7,8,9,10,11,12]
-scoli = ["Scoala balcescu", "Scoala Dacia", "Scoala Oltea Doamna", "Liceul Emanuil Gojdu", "Liceul Mihai Eminscu", "Scoala Generala 16"]
+scoli = ["Scoala Balcescu", "Scoala Dacia", "Scoala Oltea Doamna", "Liceul Emanuil Gojdu", "Liceul Mihai Eminscu", "Scoala Generala 16"]
 
 elevi =[]
 
